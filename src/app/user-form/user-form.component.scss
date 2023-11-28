@@ -1,0 +1,42 @@
+.user-form {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid black;
+
+    h2{
+        text-align: center;
+    }
+
+    .form-group{
+        margin-top: 26px;
+        margin-left: 20px;
+
+        input{
+            padding: 5px;
+            width: 350px;
+        }
+        label{
+            font-weight: bold;
+        }
+        .msg{
+            color: red;
+        }
+    }
+  
+  button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  
+  button:disabled {
+    background-color: #dddddd;
+    cursor: not-allowed;
+  }
+}

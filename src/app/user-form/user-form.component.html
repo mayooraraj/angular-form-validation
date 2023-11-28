@@ -1,0 +1,72 @@
+<div class="user-form">
+    <h2>Add User Details</h2>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+
+        <div class="form-group">
+            <label for="username">Username:</label> <br>
+            <input  type="text" id="username" name="username" [(ngModel)]="user.username" required
+                   pattern="[a-zA-Z]+" minlength="3" maxlength="20">
+            <div *ngIf="userForm.controls['username'].touched && userForm.controls['username'].invalid">
+              <div *ngIf="userForm.controls['username'].errors?.['required']" class="msg">Username is required.</div>
+              <div *ngIf="userForm.controls['username'].errors?.['pattern']" class="msg">Username must contain only alphabetic characters.</div>
+              <div *ngIf="userForm.controls['username'].errors?.['minlength']" class="msg">Username must be at least 3 characters long.</div>
+              <div *ngIf="userForm.controls['username'].errors?.['maxlength']" class="msg">Username cannot be more than 20 characters long.</div>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email:</label> <br>
+            <input type="email" id="email" name="email" [(ngModel)]="user.email" required>
+            <div *ngIf="userForm.controls['email']?.touched && userForm.controls['email']?.invalid">
+              <div *ngIf="userForm.controls['email']?.errors?.['required']" class="msg">Email is required.</div>
+              <div *ngIf="userForm.controls['email']?.errors?.['email']" class="msg">Invalid email format.</div>
+            </div>
+          </div>
+  
+     
+        <div class="form-group">
+            <label for="address">Address:</label> <br>
+            <input type="text" id="address" name="address" [(ngModel)]="user.address" required>
+        <div *ngIf="userForm.controls['address'].touched && userForm.controls['address'].invalid">
+        <div *ngIf="userForm.controls['address'].errors?.['required']" class="msg">Address is required.</div>
+        </div>
+        </div>
+  
+  
+      <div class="form-group">
+        <label for="dob">Date of Birth:</label><br>
+        <input type="date" id="dob" name="dob" [(ngModel)]="user.dob" required>
+        <div *ngIf="userForm.controls['dob'].touched && userForm.controls['dob'].invalid">
+          <div *ngIf="userForm.controls['dob'].errors?.['required']" class="msg">Date of Birth is required.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="password">Password:</label> <br>
+        <input type="password" id="password" name="password" [(ngModel)]="user.password" required
+               pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+               minlength="8" maxlength="20">
+        <div *ngIf="userForm.controls['password'].touched && userForm.controls['password'].invalid">
+          <div *ngIf="userForm.controls['password'].errors?.['required']" class="msg">Password is required.</div>
+          <div *ngIf="userForm.controls['password'].errors?.['pattern']" class="msg">Password must be a combination of alphabets, numbers, and special characters.</div>
+          <div *ngIf="userForm.controls['password'].errors?.['minlength']" class="msg">Password must be at least 8 characters long.</div>
+          <div *ngIf="userForm.controls['password'].errors?.['maxlength']" class="msg">Password cannot be more than 20 characters long.</div>
+        </div>
+      </div>
+  
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number:</label><br>
+        <input type="tel" id="phoneNumber" name="phoneNumber" [(ngModel)]="user.phoneNumber" required
+               pattern="[0-9]+" minlength="10" maxlength="15">
+        <div *ngIf="userForm.controls['phoneNumber'].touched && userForm.controls['phoneNumber'].invalid">
+          <div *ngIf="userForm.controls['phoneNumber'].errors?.['required']" class="msg">Phone Number is required.</div>
+          <div *ngIf="userForm.controls['phoneNumber'].errors?.['pattern']" class="msg">Phone Number must contain only numbers.</div>
+          <div *ngIf="userForm.controls['phoneNumber'].errors?.['minlength']" class="msg">Phone Number must be at least 10 digits long.</div>
+          <div *ngIf="userForm.controls['phoneNumber'].errors?.['maxlength']" class="msg">Phone Number cannot be more than 15 digits long.</div>
+        </div>
+      </div>
+  
+      <button type="submit" [disabled]="userForm.invalid">Save</button>
+    </form>
+  </div>
+  
